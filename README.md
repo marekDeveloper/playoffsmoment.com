@@ -1,2 +1,2 @@
 # playoffsmoment.com
-Drupal 8 repository for <a href="http://test">playoffsmoment.com</a> website.
+Drupal 8 repository for <a href="http://www.playoffsmoment.com" target="_blank">playoffsmoment.com</a> website.
