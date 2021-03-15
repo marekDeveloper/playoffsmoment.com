@@ -8,6 +8,9 @@ $baseDir = dirname($vendorDir);
 return array(
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Stack' => array($vendorDir . '/stack/builder/src'),
+    'QueryPath' => array($vendorDir . '/querypath/querypath/src'),
+    'Flow\\JSONPath\\Test' => array($vendorDir . '/flow/jsonpath/tests'),
+    'Flow\\JSONPath' => array($vendorDir . '/flow/jsonpath/src'),
     'EasyRdf_' => array($vendorDir . '/easyrdf/easyrdf/lib'),
     'Doctrine\\Common\\Collections\\' => array($vendorDir . '/doctrine/collections/lib'),
     'Console' => array($vendorDir . '/pear/console_getopt'),
