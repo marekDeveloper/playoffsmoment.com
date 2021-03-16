@@ -26,7 +26,7 @@ Drupal provides default `example.gitignore` file. Rename that file to `.gitignor
 I was thinking using D8 Migrations, that would require creation custom migration yml file. 
 I'm wondering if I can do this exercise without writing single line of PHP code. We'll see.
 
-I have decides to use Feeds module where all mapping will be done using Admin UI. 
+I've decided to use `Feeds module` where all mapping will be done using Admin UI. 
 Feeds module is around for a really long time and was "go to solution" for D7 sites.
 
 Only disadvantage for D8 is "This project is not covered by Drupal’s security advisory policy."
@@ -39,8 +39,10 @@ And we need another module for JSON parsing: [https://www.drupal.org/project/fee
 
 Download 2 modules using composer from within `src` directory:
 
+```
 composer require drupal/feeds
 composer require drupal/feeds_ex
+```
 
 Go to Admin -> Extend (/admin/modules) and enable 2 new modules.
 
@@ -51,8 +53,8 @@ Need to create taxonomies for Conference & Division.
 
 I think I just need to create taxonomy vocabularies and Feeds can create items into lists, we'll see.
 
-Creating 2 vocabularies "NFL Conference" & "NFL Division" - /admin/structure/taxonomy
-Created both and empty list of terms for now
+Creating 2 vocabularies "NFL Conference" & "NFL Division" - /admin/structure/taxonomy. 
+Created both and empty list of terms are there for now.
 
 
 ## 6. Team content type
@@ -171,7 +173,7 @@ I did some small tweaks in "Manage form display" and "Manage display" tabs.
 In "Manage display" I've configured `Two column stacked layout` for this content type.
 
 
-## 13. Creat Teams Page node
+## 13. Create Teams Page node
 
 Go to "Admin -> Content -> Add content -> Teams Page" (node/add/teams_page) and created new node.
 
