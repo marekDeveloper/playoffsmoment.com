@@ -1,0 +1,26 @@
+/* Custom CSS */
+
+div.group-left, div.group-right {
+  padding: 2%;
+}
+
+div.group-left table, div.group-right table {
+  width: 100%;
+}
+
+@media only screen and (max-width: 800px) {
+  .ds-2col-stacked-fluid div.group-left, .ds-2col-stacked-fluid div.group-right {
+    width: 100%; padding: 2% 5%
+  }
+}
+
+div.viewsreference--view-title {
+  margin: 0 0 10px 0;
+  padding: 10px 0;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-align: center;
+  background: #85cef1;
+  color: #ffffff;
+}
+
