@@ -21,7 +21,8 @@
         "drupal/core-recommended": "^8.8",
         "drupal/ds": "^3.11",
         "drupal/feeds": "^3.0@alpha",
-        "drupal/feeds_ex": "^1.0@alpha"
+        "drupal/feeds_ex": "^1.0@alpha",
+        "drupal/viewsreference": "^1.7"
     },
     "conflict": {
         "drupal/drupal": "*"
