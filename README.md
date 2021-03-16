@@ -69,11 +69,11 @@ Tweaks for default form: Remove check for "Promoted to front page" & "Display au
 
 Continue to add new fields in Manage fields section for Team content type + match API fields
 
-name = Title (text plain field) - required
-nickname = Nickname (text plain field) - required
-display_name = Display Name (text plain field)
-conference = Conference (taxonomy reference: NFL Conference)
-division = Division (taxonomy reference: NFL Division)
+name = Title (text plain field) - required  
+nickname = Nickname (text plain field) - required  
+display_name = Display Name (text plain field)  
+conference = Conference (taxonomy reference: NFL Conference)  
+division = Division (taxonomy reference: NFL Division)  
 id = API ID (text plain field - integer) - required
 
 For taxonomies reference ... check "Create referenced entities if they don't already exist"
@@ -85,26 +85,26 @@ I did some small tweaks in "Manage form display" and "Manage display" tabs.
 
 Need to create new `Feed Type`, go to "Admin -> Structure -> Feed types -> Add feed type".
 
-Type Name: NFL JSON
-Description: 3rd party API for NFL team import from JSON
-Fetcher: Download from URL
-Parser: JsonPath
-Processor: Node
-Content Type: Team
-Import period: 15 minutes
+Type Name: NFL JSON  
+Description: 3rd party API for NFL team import from JSON  
+Fetcher: Download from URL  
+Parser: JsonPath  
+Processor: Node  
+Content Type: Team  
+Import period: 15 minutes  
 TO DO! Requires cron to be configured?!
 
 Processor settings: Update existing content items & un-publish content item when no longer in the feed + Owner: Feed author
 
 ### Feeds Mapping Tab
 
-Context: $.results.data.team.*
+Context: `$.results.data.team.*`
 
-id: 			API ID (field_api_id) - unique
-name: 			Title (title)
-nickname: 		Nickname (field_nickname)
-display_name: 	Display Name (field_display_name)
-conference: 	Conference (field_conference) - Reference by: Name + Autocreate terms: Yes
+id: 			API ID (field_api_id) - unique  
+name: 			Title (title)  
+nickname: 		Nickname (field_nickname)  
+display_name: 	Display Name (field_display_name)  
+conference: 	Conference (field_conference) - Reference by: Name + Autocreate terms: Yes  
 division: 		Division (field_division) - Reference by: Name + Autocreate terms: Yes
 
 
