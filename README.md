@@ -193,9 +193,13 @@ New theme installation using Admin -> Appearance interface -> Install new theme.
 
 Oh well, this is disappointment ... I've tried few themes and I did not like any of them.
 
-TO DO! Continue to trey some other themes ... showcase_lite seems little better.
+TO DO! Continue to try some other themes ... showcase_lite seems little better.
 
+I did little bit more research and decided to go with Adaptive theme [https://www.drupal.org/project/adaptivetheme]
 
+Adaptive theme needs AT Tools module [https://www.drupal.org/project/at_tools] so I installed it using composer.
+
+And created `marek_test` theme from adaptive theme usin AT UI interface where I configured new theme and needed to write few lines of CS to make my NFL team tables better for responsive.
 
 
 
