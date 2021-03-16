@@ -121,24 +121,82 @@ And all seems to be working fine ... nice green message "NFL Teams Import - Resu
 
 Now need to check actual data in D8 CMS.
 
-Information imported into `Team`content type seems all good, even taxonomies are imported properly.
+Information imported into `Team` content type seems all good, even taxonomies are imported properly.
 
 
- 
+## 9. Display Suite module installation
+
+I want 2 column layout for my content, so installing DS module [https://www.drupal.org/project/ds]
+
+composer require drupal/ds
+
+Go to Admin -> Extend (/admin/modules) and enable new module.
+
+
+## 10. Create View
+
+Creating new `Block` view `NFL Teams`. Go to "Admin -> Structure -> Views -> Add view"
+
+Created 2 view blocks `NFC Teams` & `AFC Teams`. Display content fields as table and multiple view configuration done.
+
+
+## 11. Views Reference Field module installation
+
+To be able to assign views to fields I need Views Reference Field module [https://www.drupal.org/project/viewsreference]
+
+composer require drupal/viewsreference
+
+Go to Admin -> Extend (/admin/modules) and enable new module.
+
+
+## 12. Teams Page content type
+
+Creating new `Teams Page` content type which will show all imported teams on one page.
+
+I would like to display 2 tables, one for each Conference. I was not able to do this just in Views.
+I'm going to use Display Suite module.
+
+Create Team Page: "Admin -> Structure -> Content types -> Add content type" (/admin/structure/types/add)
+
+Type name: Teams Page.
+
+Tweaks for default form: Remove check for "Promoted to front page" & "Display author and date information"
+
+Continue to add new fields in Manage fields section for Teams Page content type
+
+Adding 2 fields `Left Column` & `Right Column` for left and right column blocks as `Views reference`.
+
+I did some small tweaks in "Manage form display" and "Manage display" tabs.
+
+In "Manage display" I've configured `Two column stacked layout` for this content type.
+
+
+## 13. Creat Teams Page node
+
+Go to "Admin -> Content -> Add content -> Teams Page" (node/add/teams_page) and created new node.
+
+Making this new page to be homepage ... go to "Configuration -> Basic site settings -> Front Page" (/admin/config/system/site-information)
+
+And added views reference to Left and Right. Now I can see all information I want to see.
+
+Well, it is kind of ugly with this default theme.
+And not even responsive ... even testing "Fluid two column stacked layout" no luck with responsive, need another theme.
+
+
+## 14. Try new theme
+
+Going to try `Basic` theme: [https://www.drupal.org/project/basic]
+
+Basic boasts a clean HTML5 structure with extensible CSS classes for unlimited theming possibilities as well as a top-down load order for improved SEO. It is fully responsive out-of-the-box.
+
+New theme installation using Admin -> Appearance interface -> Install new theme.
+
+Oh well, this is disappointment ... I've tried few themes and I did not like any of them.
+
+TO DO! Continue to trey some other themes ... showcase_lite seems little better.
 
 
 
-
-
-
-
-
-## 10000. Teams Page content type
-
-Creating new `Teams Page` content type which will show all imported teams at once. 
-I would like to display 2 tables, one for each Conference. I was not able to do this just in Views, I think I will need Panels or Display Suite.
-
-TO DO! Continue here when data imported, add fields, display suite, etc.
 
 
 
