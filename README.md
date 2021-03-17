@@ -112,14 +112,16 @@ division: 		Division (field_division) - Reference by: Name + Autocreate terms: Y
 
 Go to "Admin -> Content -> Feeds -> Add feed"
 
-Creating new feed 
+Creating new feed.
 
-Title: NFL Teams Import - Resulta Test
+Title: NFL Teams Import - Resulta Test  
 Feed URL: 3rd party JSON API provided by Resulta team
 
 Save and run import ... 
 
-And all seems to be working fine ... nice green message "NFL Teams Import - Resulta Test: Created 32 Team items."
+And all seems to be working fine ... nice green message:
+
+> "NFL Teams Import - Resulta Test: Created 32 Team items."
 
 Now need to check actual data in D8 CMS.
 
@@ -128,9 +130,9 @@ Information imported into `Team` content type seems all good, even taxonomies ar
 
 ## 9. Display Suite module installation
 
-I want 2 column layout for my content, so installing DS module [https://www.drupal.org/project/ds]
+I want 2 columns layout for my content, so installing DS module [https://www.drupal.org/project/ds]
 
-composer require drupal/ds
+`composer require drupal/ds`
 
 Go to Admin -> Extend (/admin/modules) and enable new module.
 
@@ -144,9 +146,9 @@ Created 2 view blocks `NFC Teams` & `AFC Teams`. Display content fields as table
 
 ## 11. Views Reference Field module installation
 
-To be able to assign views to fields I need Views Reference Field module [https://www.drupal.org/project/viewsreference]
+To be able to assign views to fields I need `Views Reference Field` module [https://www.drupal.org/project/viewsreference]
 
-composer require drupal/viewsreference
+`composer require drupal/viewsreference`
 
 Go to Admin -> Extend (/admin/modules) and enable new module.
 
@@ -155,7 +157,7 @@ Go to Admin -> Extend (/admin/modules) and enable new module.
 
 Creating new `Teams Page` content type which will show all imported teams on one page.
 
-I would like to display 2 tables, one for each Conference. I was not able to do this just in Views.
+I would like to display 2 tables, one for each NFL Conference. I was not able to do this just in the View.
 I'm going to use Display Suite module.
 
 Create Team Page: "Admin -> Structure -> Content types -> Add content type" (/admin/structure/types/add)
@@ -164,7 +166,7 @@ Type name: Teams Page.
 
 Tweaks for default form: Remove check for "Promoted to front page" & "Display author and date information"
 
-Continue to add new fields in Manage fields section for Teams Page content type
+Continue to add new fields in "Manage fields" section for "Teams Page" content type.
 
 Adding 2 fields `Left Column` & `Right Column` for left and right column blocks as `Views reference`.
 
@@ -181,7 +183,7 @@ Making this new page to be homepage ... go to "Configuration -> Basic site setti
 
 And added views reference to Left and Right. Now I can see all information I want to see.
 
-Well, it is kind of ugly with this default theme.
+Well, it is kind of ugly with this default theme.  
 And not even responsive ... even testing "Fluid two column stacked layout" no luck with responsive, need another theme.
 
 
@@ -189,21 +191,30 @@ And not even responsive ... even testing "Fluid two column stacked layout" no lu
 
 Going to try `Basic` theme: [https://www.drupal.org/project/basic]
 
-Basic boasts a clean HTML5 structure with extensible CSS classes for unlimited theming possibilities as well as a top-down load order for improved SEO. It is fully responsive out-of-the-box.
+> Basic boasts a clean HTML5 structure with extensible CSS classes for unlimited theming possibilities as well as a top-down load order for improved SEO. It is fully responsive out-of-the-box.
 
-New theme installation using Admin -> Appearance interface -> Install new theme.
+New theme installation using "Admin -> Appearance interface -> Install new theme".
 
-Oh well, this is disappointment ... I've tried few themes and I did not like any of them.
+Oh well, this is disappointing ... I've tried few themes and I did not like any of them.
 
 TO DO! Continue to try some other themes ... showcase_lite seems little better.
 
-I did little bit more research and decided to go with Adaptive theme [https://www.drupal.org/project/adaptivetheme]
+I did little bit more research and tests. I've decided to go with Adaptive theme [https://www.drupal.org/project/adaptivetheme]
 
 Adaptive theme needs AT Tools module [https://www.drupal.org/project/at_tools] so I installed it using composer.
 
 And created `marek_test` theme from adaptive theme usin AT UI interface where I configured new theme and needed to write few lines of CS to make my NFL team tables better for responsive.
 
 
+## 15. Create admin account
 
+Created admin account for resulta to review Drupal 8 setup.
+
+
+## 16. Deployment to host
+
+Copy over all the files from local to server using SFTP, package local DB and deploy to server.
+
+TO DO! Continue to make this work on the server.
 
 
