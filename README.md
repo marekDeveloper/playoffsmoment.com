@@ -234,9 +234,9 @@ All seems to be working on the server now: <a href="http://www.playoffsmoment.co
 
 ## Screenshots
 
-![Website Homepage][site.png]
+![Website Homepage](site.png)
 
-![site.png]
+!(site.png)
 
 ![Feed Mapping][images/feed-mapping.png]
 
