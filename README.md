@@ -229,11 +229,14 @@ All seems to be working on the server now: <a href="http://www.playoffsmoment.co
 7. Proper QA
 8. Setup proper backups
 9. Enter Warranty & Maintenance phase
+10. New Icon needed
 
 
 ## Screenshots
 
-![Website Homepage][images/site.png]
+![Website Homepage][site.png]
+
+![site.png]
 
 ![Feed Mapping][images/feed-mapping.png]
 
