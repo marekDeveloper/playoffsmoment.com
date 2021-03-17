@@ -215,6 +215,22 @@ Created admin account for resulta to review Drupal 8 setup.
 
 Copy over all the files from local to server using SFTP, package local DB and deploy to server.
 
-TO DO! Continue to make this work on the server.
+All seems to be working on the server now: <a href="http://www.playoffsmoment.com" target="_blank">playoffsmoment.com</a>
+
+
+## TO DOs
+
+1. Make it HTTPS
+2. Configure Users & Accounts
+3. Configure Comments
+4. Setup Cron if needed
+5. Configure proper Cache
+6. If more pages will be added sitemap would be nice
+7. Proper QA
+8. Setup proper backups
+9. Enter Warranty & Maintenance phase
+
+
+
 
 
