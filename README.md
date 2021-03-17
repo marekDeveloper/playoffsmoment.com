@@ -234,13 +234,17 @@ All seems to be working on the server now: <a href="http://www.playoffsmoment.co
 
 ## Screenshots
 
-![Website Homepage](site.png)
+Website Homepage with Teams List
 
-!(site.png)
+![Website Homepage](images/site.png)
 
-![Feed Mapping][images/feed-mapping.png]
+Feeds Mapping
 
-![View Blocks][images/view.png]
+![Feed Mapping](images/feed-mapping.png)
+
+View Blocks
+
+![View Blocks](images/view.png)
 
 
 
