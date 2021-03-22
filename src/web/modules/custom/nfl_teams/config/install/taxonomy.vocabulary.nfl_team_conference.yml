@@ -1,0 +1,12 @@
+# Create taxonomy vocabulary - NFL Team Conference
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - nfl_teams
+name: NFL Team Conference
+vid: nfl_team_conference
+description: 'Taxonomy for NFL Teams Conferences'
+hierarchy: 0
+weight: 0

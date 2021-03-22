@@ -1,0 +1,12 @@
+# Create taxonomy vocabulary - NFL Team Division
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - nfl_teams
+name: NFL Team Division
+vid: nfl_team_division
+description: 'Taxonomy for NFL Teams Division'
+hierarchy: 0
+weight: 0
