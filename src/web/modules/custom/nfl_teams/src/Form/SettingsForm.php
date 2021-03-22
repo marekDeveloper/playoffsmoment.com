@@ -7,6 +7,7 @@ namespace Drupal\nfl_teams\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\nfl_teams\TeamsAPI;
 
 class SettingsForm extends ConfigFormBase {
   /**
@@ -37,6 +38,12 @@ class SettingsForm extends ConfigFormBase {
     // get config values
     $config = $this->config('nfl_teams.settings');
 
+    // Teams API object, needed for status information later
+    $teamsApi = new TeamsAPI;
+
+    // check config for allow_url_fopen
+    $allow_url_fopen = ini_get('allow_url_fopen') ? 'TRUE' : 'FALSE';
+
     //**** Form fields ****//
     $form = [];
 
@@ -65,6 +72,12 @@ class SettingsForm extends ConfigFormBase {
 
     }
 
+    // add info about $allow_url_fopen
+    $form['api_url_fieldset']['allow_url_fopen'] = [
+      '#type' => 'markup',
+      '#markup' => $this->t('PHP Configuration') . " - allow_url_fopen: <b>{$allow_url_fopen}</b><br />"
+    ];
+
     // setting information list for API status, weight is moving this below save button
     $form['api_status_fieldset'] = [
       '#type' => 'fieldset',
@@ -74,8 +87,10 @@ class SettingsForm extends ConfigFormBase {
 
     $form['api_status_fieldset']['url_info'] = [
       '#type' => 'markup',
-      '#markup' => 'TO DO!'
+      '#markup' => '<div class="messages messages--' . ($teamsApi->validUrlFlag ? 'status' : 'error') . '">API URL Validation Status: ' . ($teamsApi->validUrlFlag ? 'OK' : 'ERROR') . '</div>'
     ];
+
+    $form['api_status_fieldset']['url_info']['#markup'].= $teamsApi->messages();
 
     // if have URL and $checkApiFlag we will check API connection as well
     if ($checkApiFlag) {
@@ -89,12 +104,12 @@ class SettingsForm extends ConfigFormBase {
 
     }
 
-    // different return depends on parameter if we are callng API or not
+    // different return depends on parameter if we are calling API or not
     if ($checkApiFlag) {
       // just return form without save information - information form
       return $form;
     } else {
-      // retunr form with submit button and able to save configurable fields
+      // return form with submit button and able to save configurable fields
       return parent::buildForm($form, $form_state);
     }
   }
