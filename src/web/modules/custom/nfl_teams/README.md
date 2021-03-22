@@ -6,6 +6,31 @@ The NFL Team module ia custom module for Drupal 8. Module provides integration w
 This is experimental module and I would not recommend to deploy to live site without more work and review.
 
 ## Current Features
+- Provides API configuration
+- Provides API URL check
+- Allows to review API data
+
+# Screenshots
+
+NFL Teams Configuration - Invalid URL
+
+![URL Validation Error](doc_images/url_validation_error.png)
+
+NFL Teams Configuration - Valid URL
+
+![URL Validation OK](doc_images/url_validation_ok.png)
+
+NFL Teams Configuration - Teams array from JSON API
+
+![Teams Array](doc_images/teams_array.png)
+
+NFL Teams Configuration - Teams HTML table data from JSON API
+
+![Teams Array](doc_images/teams_table.png)
+
+
+
+## TO DO! Features
 - Import all NFL teams from 3rd party API into custom NFL Team content type and show all teams in a block.
 
 
