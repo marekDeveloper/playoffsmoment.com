@@ -10,19 +10,23 @@ This is experimental module and I would not recommend to deploy to live site wit
 - Provides API URL check
 - Allows to review API data
 
+
 # Screenshots
 
 NFL Teams Configuration - Invalid URL
 
 ![URL Validation Error](doc_images/url_validation_error.png)
 
+
 NFL Teams Configuration - Valid URL
 
 ![URL Validation OK](doc_images/url_validation_ok.png)
 
+
 NFL Teams Configuration - Teams array from JSON API
 
 ![Teams Array](doc_images/teams_array.png)
+
 
 NFL Teams Configuration - Teams HTML table data from JSON API
 

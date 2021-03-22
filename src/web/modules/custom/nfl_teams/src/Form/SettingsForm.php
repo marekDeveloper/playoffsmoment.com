@@ -117,7 +117,7 @@ class SettingsForm extends ConfigFormBase {
 
       $form['teams_result_fieldset'] = [
         '#type' => 'fieldset',
-        '#title' => $this->t('NFL Teams form API'),
+        '#title' => $this->t('NFL Teams from API'),
         '#weight' => 499
       ];
 
