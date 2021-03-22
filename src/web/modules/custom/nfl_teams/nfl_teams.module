@@ -1,0 +1,20 @@
+<?php
+
+/**
+ * Developed by Marek - March 2021
+ * This is just experimnetal module for Resulta tests
+ */
+
+/**
+ * @file
+ * Contains nfl_teams.module
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function loremipsum_help($route_name, RouteMatchInterface $route_match) {
+    return t('TO DO! Add module help information');
+}

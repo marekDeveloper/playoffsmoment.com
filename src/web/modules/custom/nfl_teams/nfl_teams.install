@@ -1,0 +1,41 @@
+<?php
+/**
+ * @file
+ * Install, update, and uninstall functions for the NFL Teams custom module.
+ */
+
+use Drupal\Core\Url;
+
+/**
+ * Implements hook_requirements().
+ */
+function nfl_teams_requirements($phase) {
+  $requirements = [];
+
+  if ($phase == 'runtime') {
+
+    // check if API URL is configured
+    $config = \Drupal::config('nfl_teams.settings');
+    $valid_credentials = $config->get('valid_api_url') === TRUE;
+
+    if (!$valid_api_url) {
+      $link_to_settings = Url::fromRoute('nfl_teams.admin_settings_form')->toString();
+      $message = t('Missing valid API URL for NFL Teams module. Please go <a href="@link_to_settings">here</a> to set.', ['@link_to_settings' => $link_to_settings]);
+
+      $requirements['nfl_teams'] = array(
+        'title' => t('NFL Teams - API URL'),
+        'severity' => REQUIREMENT_ERROR,
+        'description' => $message,
+      );
+    }
+
+    // TO DO! check if NFL Team content type exists
+
+    // TO DO! check if NFL Teams view exists
+
+    // TO DO! check if NFL taxonomies are created and not empty
+
+  } // end if $phase == 'runtime'
+
+  return $requirements;
+}

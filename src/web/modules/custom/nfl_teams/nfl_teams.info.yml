@@ -1,0 +1,6 @@
+name: 'NFL Teams'
+description: 'Custom module for NFL Teams from 3rd party API.'
+type: module
+package: Development
+core: 8.x
+configure: nfl_teams.form

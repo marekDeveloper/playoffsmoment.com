@@ -1,0 +1,6 @@
+nfl_teams.admin_settings:
+  title: 'NFL Teams'
+  description: 'Configure integration with 3rd party API'
+  parent: system.admin_config_development
+  route_name: nfl_teams.admin_settings_form
+  weight: 99
