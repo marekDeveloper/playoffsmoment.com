@@ -1,3 +1,5 @@
+# NON STABLE - Work In Progress - WIP!
+
 # NFL Teams
 The NFL Team module ia custom module for Drupal 8. Module provides integration with 3rd party API.
 
@@ -26,7 +28,8 @@ This is experimental module and I would not recommend to deploy to live site wit
 ## Installed components
 - After you enable/install this module, following Drupal components will be created:
 1. Taxonomies
-TO DO! List of components
+TO DO! List of components - so far only install taxonomy vocabulary.
+All other work is now done in admin section/form where API tests are provided as well.
 
 
 ## Uninstall

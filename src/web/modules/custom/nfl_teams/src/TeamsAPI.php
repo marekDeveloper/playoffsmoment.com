@@ -2,6 +2,7 @@
 
 namespace Drupal\nfl_teams;
 
+use Drupal\Component\Serialization\Json;
 use Drupal\Component\Utility\UrlHelper;
 use GuzzleHttp\Client;
 use \GuzzleHttp\Exception\ClientException;
@@ -104,26 +105,42 @@ class TeamsAPI {
 
   }
 
-  public function validateAPI() {
+  // get data from API call - get json and convert to array and return array
+  public function getApiData() {
 
-    // TO DO! Validate if we have valid URL in config and try to check that URL?
+    // always return array, possible empty if something goes wrong
+    $dataResult = [];
 
-  }
+    // there are multiple ways to fetch remote url content
+    // 1. easiest is probably file_get_contents() - depends on PHP configuration for allow_url_fopen
+    // 2. second would be to write direct PHP CURL code
+    // 3. Drupal way is probably to use their Guzzle HTTP Client - this what I'm going to try
 
-  // get Teams
-  public function getTeams() {
+    // $teamsJson = file_get_contents($this->fullUrl);
 
-    $teamsListResult = FALSE;
-
-    $teamsJson = file_get_contents($this->fullUrl);
-
-    print_r($teamsJson);
-
+    // prepare guzzle http adapter
     $adapter = new Client();
 
     try {
 
-      // TO DO! Guzzle? or just fOpen?
+      // perform get request to remote API
+      $request = $adapter->request('GET', $this->fullUrl);
+
+      // check status code
+      if ($request->getStatusCode() != 200) {
+
+        // error
+        $this->message.= 'API GET request did not return 200 Status Code';
+
+      } else {
+
+        // all seems to be fine - get content body which should be JSON - decode as well
+        $jsonData = $request->getBody()->getContents();
+
+        // decode 
+        $dataResult = Json::decode($jsonData);
+
+      } // end if
 
     } catch(ClientException $e) {
 
@@ -131,6 +148,17 @@ class TeamsAPI {
       return FALSE;
 
     }
+
+    // return final array
+    return $dataResult;
+
+  }
+
+  // get Teams - get teams from json into array and parse out teams info from data structure
+  public function getTeams() {
+
+    $data = $this->getApiData();
+    
   }
 
   // get messages, other than critical errors

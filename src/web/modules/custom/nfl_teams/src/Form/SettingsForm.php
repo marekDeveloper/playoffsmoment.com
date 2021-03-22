@@ -90,18 +90,30 @@ class SettingsForm extends ConfigFormBase {
       '#markup' => '<div class="messages messages--' . ($teamsApi->validUrlFlag ? 'status' : 'error') . '">API URL Validation Status: ' . ($teamsApi->validUrlFlag ? 'OK' : 'ERROR') . '</div>'
     ];
 
+    // add messages to help debug when needed
     $form['api_status_fieldset']['url_info']['#markup'].= $teamsApi->messages();
 
     // if have URL and $checkApiFlag we will check API connection as well
     if ($checkApiFlag) {
 
-      print 'TO DO! Check API, try to call and maybe show JSON result?';
+      $form['api_result_fieldset'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('NFL Teams API Data'),
+        '#weight' => 499
+      ];
+
+      $form['api_result_fieldset']['data'] = [
+        '#type' => 'markup',
+        '#markup' => '<div class="messages messages--status"><pre>' . print_r($teamsApi->getApiData(), 1) . '</pre></div>'
+      ];
 
       // add button to go back to module configuration screen from this fieldset
       $current_path = \Drupal::service('path.current')->getPath();
       $form['api_url_fieldset']['api_url_status']['#markup'].= '<p><a class="button" href="' . $current_path .'">Back to module configuration</a></p>';
 
-
+    } else {
+      // add button to fetch API data
+      $form['api_status_fieldset']['url_info']['#markup'].= '<a class="button button--primary" href="?checkApiFlag=1">SHOW API DATA</a>';
     }
 
     // different return depends on parameter if we are calling API or not
