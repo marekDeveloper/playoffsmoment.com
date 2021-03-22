@@ -155,10 +155,40 @@ class TeamsAPI {
   }
 
   // get Teams - get teams from json into array and parse out teams info from data structure
-  public function getTeams() {
+  // $tableFlag - this will generate simple HTML table with data
+  public function getTeams($tableFlag = FALSE) {
 
     $data = $this->getApiData();
-    
+    $teamsData = $data['results']['data']['team'];
+
+    if ($tableFlag) {
+      // generate simple HTML table
+      $out = '<table>';
+      foreach ($teamsData as $index => $team) {
+
+        // headers first
+        if (!$index) {
+          $headers = array_keys($team);
+          $out.= '<tr><th>' . implode('</th><th>', $headers) . '</th></tr>';
+        } // end if
+
+        // team data
+        $out.= '<tr><td>' . implode('</td><td>', $team) . '</td></tr>';
+
+      } // end foreach
+
+      $out.= '</table>';
+
+      // return HTML table
+      return $out;
+
+
+    } else {
+      // return array from API
+      return $teamsData;
+    }
+
+
   }
 
   // get messages, other than critical errors

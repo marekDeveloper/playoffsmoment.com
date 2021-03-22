@@ -34,6 +34,8 @@ class SettingsForm extends ConfigFormBase {
     // get parameter from the query, if there is checkApiFlag as param we will try to fetch data
     // based on this parameter form might be different as well
     $checkApiFlag = \Drupal::request()->query->get('checkApiFlag');
+    $showApiTeamsFlag = \Drupal::request()->query->get('showApiTeamsFlag'); // this will show parsed data
+    $tableFlag = \Drupal::request()->query->get('table'); // this will show parsed data in simple HTML table
 
     // get config values
     $config = $this->config('nfl_teams.settings');
@@ -53,7 +55,7 @@ class SettingsForm extends ConfigFormBase {
     ];
 
     // check if we going to test API or show edit form
-    if ($checkApiFlag) {
+    if ($checkApiFlag || $showApiTeamsFlag) {
       
       $form['api_url_fieldset']['api_url'] = [
         '#type' => 'markup',
@@ -93,7 +95,7 @@ class SettingsForm extends ConfigFormBase {
     // add messages to help debug when needed
     $form['api_status_fieldset']['url_info']['#markup'].= $teamsApi->messages();
 
-    // if have URL and $checkApiFlag we will check API connection as well
+    // if have URL and $checkApiFlag we will check API connection as well show API data
     if ($checkApiFlag) {
 
       $form['api_result_fieldset'] = [
@@ -104,7 +106,24 @@ class SettingsForm extends ConfigFormBase {
 
       $form['api_result_fieldset']['data'] = [
         '#type' => 'markup',
-        '#markup' => '<div class="messages messages--status"><pre>' . print_r($teamsApi->getApiData(), 1) . '</pre></div>'
+        '#markup' => '<div><pre>' . print_r($teamsApi->getApiData(), 1) . '</pre></div>'
+      ];
+
+      // add button to go back to module configuration screen from this fieldset
+      $current_path = \Drupal::service('path.current')->getPath();
+      $form['api_url_fieldset']['api_url_status']['#markup'].= '<p><a class="button" href="' . $current_path .'">Back to module configuration</a></p>';
+
+    } elseif ($showApiTeamsFlag) {
+
+      $form['teams_result_fieldset'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('NFL Teams form API'),
+        '#weight' => 499
+      ];
+
+      $form['teams_result_fieldset']['data'] = [
+        '#type' => 'markup',
+        '#markup' => '<div><pre>' . print_r($teamsApi->getTeams($tableFlag), 1) . '</pre></div>'
       ];
 
       // add button to go back to module configuration screen from this fieldset
@@ -112,12 +131,14 @@ class SettingsForm extends ConfigFormBase {
       $form['api_url_fieldset']['api_url_status']['#markup'].= '<p><a class="button" href="' . $current_path .'">Back to module configuration</a></p>';
 
     } else {
-      // add button to fetch API data
+      // add button to fetch API data & teams info
       $form['api_status_fieldset']['url_info']['#markup'].= '<a class="button button--primary" href="?checkApiFlag=1">SHOW API DATA</a>';
+      $form['api_status_fieldset']['url_info']['#markup'].= '<a class="button button--primary" href="?showApiTeamsFlag=1">SHOW API TEAMS</a>';
+      $form['api_status_fieldset']['url_info']['#markup'].= '<a class="button button--primary" href="?showApiTeamsFlag=1&table=1">SHOW TEAMS TABLE</a>';
     }
 
     // different return depends on parameter if we are calling API or not
-    if ($checkApiFlag) {
+    if ($checkApiFlag || $showApiTeamsFlag) {
       // just return form without save information - information form
       return $form;
     } else {
